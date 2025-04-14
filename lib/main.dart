@@ -18,7 +18,7 @@ class GymApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.homeScreen,
+        initialRoute: Routes.introBmiScreen,
         onGenerateRoute: appRouter.generateRoure,
       ),
     );
