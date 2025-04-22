@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app_graduation_project/core/components/resuble_components.dart';
@@ -55,10 +56,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 },
                 itemBuilder: (context, index) => Column(
                   children: [
-                    Container(
-                      constraints: BoxConstraints(maxHeight: 400.h),
-                      child:
-                          Image.asset(OnboardingModel.pages[index].imageLight),
+                    Expanded(
+                      child: Container(
+                        constraints: BoxConstraints(maxHeight: 400.h),
+                        child: Image.asset(
+                            OnboardingModel.pages[index].imageLight),
+                      ),
                     ),
                     SizedBox(
                       height: 50.h,
@@ -69,10 +72,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 60.w),
-                      child: Text(
+                      child: AutoSizeText(
                         OnboardingModel.pages[index].content,
                         style: AppStyles.regular16black,
                       ),
+                    ),
+                    SizedBox(
+                      height: 50.h,
                     ),
                   ],
                 ),
