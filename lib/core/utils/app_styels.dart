@@ -15,22 +15,32 @@ class AppStyles {
   );
   static TextStyle regular20black = GoogleFonts.jost(
     color: AppColors.blackColor,
+    fontWeight: FontWeight.w400,
     fontSize: 20,
   );
   static TextStyle regular24black = GoogleFonts.jost(
+    fontWeight: FontWeight.w400,
     color: AppColors.blackColor,
+    fontSize: 24,
+  );
+  static TextStyle regular24Primary = GoogleFonts.jost(
+    fontWeight: FontWeight.w400,
+    color: AppColors.primaryColor,
     fontSize: 24,
   );
   static TextStyle regular16black = GoogleFonts.jost(
     color: AppColors.blackColor,
+    fontWeight: FontWeight.w400,
     fontSize: 16,
   );
   static TextStyle regular10black = GoogleFonts.jost(
     color: AppColors.blackColor,
+    fontWeight: FontWeight.w400,
     fontSize: 15,
   );
   static TextStyle regular80primary = GoogleFonts.jost(
     color: AppColors.primaryColor,
+    fontWeight: FontWeight.w400,
     fontSize: 80,
   );
 }
