@@ -7,29 +7,27 @@ import '../utils/app_images.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String text;
+  final TextStyle? textStyle;
   final VoidCallback onPressed;
 
   const CustomElevatedButton({
     super.key,
     required this.text,
-    required this.onPressed,
+    required this.onPressed, this.textStyle,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 362.w,
-      height: 64.h,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(7.r),
-          ),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
+        backgroundColor: AppColors.primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.r),
         ),
-        onPressed: onPressed,
-        child: Text(text, style: AppStyles.regular24black),
       ),
+      onPressed: onPressed,
+      child: Text(text, style:textStyle?? AppStyles.regular24black),
     );
   }
 }
