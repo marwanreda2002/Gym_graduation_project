@@ -33,8 +33,12 @@ dependencies:
     sdk: flutter
   flutter_native_splash: ^2.4.4
   flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.17
   auto_size_text: ^3.0.0
   google_fonts: ^6.2.1
+  shared_preferences: ^2.5.3
+  flutter_bloc: ^9.1.1
+  fluttertoast: ^8.2.12
 
 dev_dependencies:
   flutter_lints: ^5.0.0
