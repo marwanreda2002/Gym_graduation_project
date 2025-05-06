@@ -26,6 +26,7 @@ class IntroBmiScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
+
           children: [
             Image.asset(
               'assets/images/logo.png',
@@ -59,11 +60,16 @@ class IntroBmiScreen extends StatelessWidget {
               style: AppStyles.regular16black,
             ),
             const Spacer(),
-            CustomElevatedButton(
-                text: "Calculate",
-                onPressed: () {
-                  Navigator.pushNamed(context, Routes.genderScreen);
-                }),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CustomElevatedButton(
+                    text: "Calculate",
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.genderScreen);
+                    }),
+              ],
+            ),
             const SizedBox(height: 24),
           ],
         ),

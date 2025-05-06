@@ -65,3 +65,91 @@ class CustomLinearProgress extends StatelessWidget {
     );
   }
 }
+
+class CustomTextFormField extends StatelessWidget {
+  final String hintText;
+  final TextStyle? hintStyle;
+  final IconData? suffixIcon;
+  final Widget? prefixIcon;
+  final bool? isObscure;
+  final Function()? onSuffixPressed;
+  final TextEditingController controller;
+  final Color? borderColor;
+  final TextInputType? keyboardType;
+  final Function(String)? onChanged;
+  final String? Function(String?)? validator;
+
+  const CustomTextFormField(
+      {super.key,
+        required this.hintText,
+        required this.validator,
+        this.hintStyle,
+        this.suffixIcon,
+        this.prefixIcon,
+        this.isObscure,
+        required this.controller,
+        this.borderColor,
+        this.onChanged,
+        this.keyboardType,
+        this.onSuffixPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    return TextFormField(
+      validator:validator ,
+      keyboardType: keyboardType,
+      onChanged: onChanged,
+      obscureText: isObscure ?? false,
+      controller: controller,
+      style: AppStyles.regular16primary,
+      cursorColor: AppColors.primaryColor,
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 13.h,
+          horizontal: 10.w
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        suffixIcon: suffixIcon != null
+            ? Padding(
+          padding: EdgeInsets.symmetric(horizontal: width * 0.015),
+          child: IconButton(
+            onPressed: onSuffixPressed,
+            icon: Icon(suffixIcon!),
+            color: AppColors.primaryColor,
+          ),
+        )
+            : null,
+        prefixIcon: prefixIcon,
+        prefixIconColor: AppColors.primaryColor,
+        suffixIconColor: AppColors.primaryColor,
+        hintText: hintText,
+        hintStyle: AppStyles.regular15grey,
+        // errorStyle: AppStyles.bold12Red,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.r),
+          borderSide: BorderSide(
+            width: 1,
+            color: Colors.red,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: const BorderSide(
+            width: 1,
+            color:Colors.red,
+          ),
+        ),
+      ),
+    );
+  }
+}
+

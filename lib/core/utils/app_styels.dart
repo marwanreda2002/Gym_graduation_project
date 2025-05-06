@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 
@@ -29,11 +30,21 @@ class AppStyles {
     color: AppColors.primaryColor,
     fontSize: 24.sp,
   );
+  static TextStyle bold24black = GoogleFonts.jost(
+    color: AppColors.blackColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 24,);
+  static TextStyle regular15grey = GoogleFonts.jost(
+    color: AppColors.greyTextColor,
+    fontSize: 15,);
   static TextStyle regular16black = GoogleFonts.jost(
     color: AppColors.blackColor,
     fontWeight: FontWeight.w400,
     fontSize: 16.sp,
   );
+  static TextStyle regular16primary = GoogleFonts.jost(
+    color: AppColors.primaryColor,
+    fontSize: 16,);
   static TextStyle regular10black = GoogleFonts.jost(
     color: AppColors.blackColor,
     fontWeight: FontWeight.w400,
@@ -44,4 +55,15 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     fontSize: 80.sp,
   );
+
+  static TextStyle regular13primary = GoogleFonts.jost(
+    color: AppColors.primaryColor,
+    fontSize: 13,);
+  static TextStyle bold13primary = GoogleFonts.jost(
+    color: AppColors.primaryColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 13,);
+  static TextStyle regular13black= GoogleFonts.jost(
+    color: AppColors.blackColor,
+    fontSize: 13,);
 }

@@ -6,6 +6,8 @@ import 'package:gym_app_graduation_project/features/ui/BMI/dashboard_screen.dart
 import 'package:gym_app_graduation_project/features/ui/BMI/genedre_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/intro_bmi_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/weight_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/auth/login/login_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/auth/register/register_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/home_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/onboarding_screen/onboarding_screen.dart';
 
@@ -34,6 +36,12 @@ class AppRouter {
       case Routes.dashboardScreen:
         return MaterialPageRoute(
             builder: (_) => const DashboardScreen(), settings: settings);
+      case Routes.registerScreen:
+        return MaterialPageRoute(
+            builder: (_) =>  RegisterScreen(), settings: settings);
+      case Routes.loginScreen:
+        return MaterialPageRoute(
+            builder: (_) => const LoginScreen(), settings: settings);
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
