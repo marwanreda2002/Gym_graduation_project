@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/age_screen.dart';
@@ -6,20 +5,25 @@ import 'package:gym_app_graduation_project/features/ui/BMI/dashboard_screen.dart
 import 'package:gym_app_graduation_project/features/ui/BMI/genedre_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/intro_bmi_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/weight_screen.dart';
-import 'package:gym_app_graduation_project/features/ui/auth/login/login_screen.dart';
-import 'package:gym_app_graduation_project/features/ui/auth/register/register_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/home_screen.dart';
-import 'package:gym_app_graduation_project/features/ui/onboarding_screen/onboarding_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/Book/my_bookmarks_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_details_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_rating_page.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_tab.dart'
+    show Tainertab;
 
+import '../../core/utils/trainer_details_model.dart' show Video;
 import '../../features/ui/BMI/height_screen.dart';
+import '../../features/ui/home_screen/tabs/Gallery/gallery.dart';
+import '../../features/ui/home_screen/tabs/classes_tab/classes_tab.dart';
+import '../../features/ui/home_screen/tabs/trainer_tab/Thank You.dart';
+import '../../features/ui/home_screen/tabs/trainer_tab/techniecs.dart';
 
 class AppRouter {
   Route generateRoure(RouteSettings settings) {
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case Routes.onboardingScreen:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.introBmiScreen:
         return MaterialPageRoute(builder: (_) => const IntroBmiScreen());
       case Routes.genderScreen:
@@ -36,19 +40,53 @@ class AppRouter {
       case Routes.dashboardScreen:
         return MaterialPageRoute(
             builder: (_) => const DashboardScreen(), settings: settings);
-      case Routes.registerScreen:
+      case Routes.trainerTab:
         return MaterialPageRoute(
-            builder: (_) =>  RegisterScreen(), settings: settings);
-      case Routes.loginScreen:
+            builder: (_) => const Tainertab(), settings: settings);
+      case Routes.class_Tab:
         return MaterialPageRoute(
-            builder: (_) => const LoginScreen(), settings: settings);
+            builder: (_) => const class_tab(), settings: settings);
+
+      case Routes.gallery:
+        return MaterialPageRoute(
+            builder: (_) => const Gallery(), settings: settings);
+      case Routes.myBookmarksScreen:
+        return MaterialPageRoute(
+            builder: (_) => const MyBookmarksScreen(), settings: settings);
+      case Routes.trainerDetailsPage:
+        final trainerId =
+        settings.arguments is int ? settings.arguments as int : 0;
+        return MaterialPageRoute(
+          builder: (_) => TrainerDetailsPage(
+            trainerId: trainerId,
+            settings: settings,
+          ),
+        );
+      case Routes.techniqueVideosPage:
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+          builder: (_) => TechniqueVideosPage(
+            videos: args['videos'] as List<Video>,
+            title: args['title'] as String,
+          ),
+        );
+      case Routes.trainerRatingPage:
+        return MaterialPageRoute(
+          builder: (_) => TrainerRatingPage(
+            trainerId: settings.arguments as int,
+          ),
+          settings: settings,
+        );
+      case Routes.thankYouPage:
+        return MaterialPageRoute(builder: (_) => ThankYouPage());
       default:
         return MaterialPageRoute(
-            builder: (_) => Scaffold(
-                  body: Center(
-                    child: Text('No route for ${settings.name}'),
-                  ),
-                ));
+          builder: (_) => Scaffold(
+            body: Center(
+              child: Text('No route for ${settings.name}'),
+            ),
+          ),
+        );
     }
   }
 }
