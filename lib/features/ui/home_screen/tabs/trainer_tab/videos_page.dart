@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gym_app_graduation_project/core/utils/trainer_details_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../../core/utils/app_colors.dart' show AppColors_Detail;
+import '../../../../../core/utils/app_colors.dart'
+    show AppColors, AppColors_Detail;
 
 class VideosPage extends StatelessWidget {
   final List<Technique> techniques;
@@ -24,7 +25,6 @@ class VideosPage extends StatelessWidget {
     final allVideos = techniques.expand((tech) => tech.videos).toList();
 
     return Scaffold(
-      backgroundColor: AppColors_Detail.background,
       appBar: AppBar(
         title: const Text('vodeos'),
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
@@ -46,7 +46,7 @@ class VideosPage extends StatelessWidget {
               onTap: () => _openVideo(video.url),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppColors_Detail.white,
+                  color: AppColors.whiteColor,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
@@ -83,7 +83,7 @@ class VideosPage extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 8),
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: AppColors_Detail.primary,
+                          backgroundColor: AppColors.primaryColor,
                           foregroundColor: Colors.white,
                           minimumSize: const Size(100, 35),
                         ),

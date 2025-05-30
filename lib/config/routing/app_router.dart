@@ -7,10 +7,13 @@ import 'package:gym_app_graduation_project/features/ui/BMI/intro_bmi_screen.dart
 import 'package:gym_app_graduation_project/features/ui/BMI/weight_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/home_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/Book/my_bookmarks_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/chat_bot/chat_bot_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/class_details_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/Payment/payment_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_details_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_rating_page.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_tab.dart'
-    show Tainertab;
+    show TrainerTab;
 
 import '../../core/utils/trainer_details_model.dart' show Video;
 import '../../features/ui/BMI/height_screen.dart';
@@ -23,7 +26,7 @@ class AppRouter {
   Route generateRoure(RouteSettings settings) {
     switch (settings.name) {
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       case Routes.introBmiScreen:
         return MaterialPageRoute(builder: (_) => const IntroBmiScreen());
       case Routes.genderScreen:
@@ -42,14 +45,7 @@ class AppRouter {
             builder: (_) => const DashboardScreen(), settings: settings);
       case Routes.trainerTab:
         return MaterialPageRoute(
-            builder: (_) => const Tainertab(), settings: settings);
-      case Routes.class_Tab:
-        return MaterialPageRoute(
-            builder: (_) => const class_tab(), settings: settings);
-
-      case Routes.gallery:
-        return MaterialPageRoute(
-            builder: (_) => const Gallery(), settings: settings);
+            builder: (_) => const TrainerTab(), settings: settings);
       case Routes.myBookmarksScreen:
         return MaterialPageRoute(
             builder: (_) => const MyBookmarksScreen(), settings: settings);
@@ -77,8 +73,17 @@ class AppRouter {
           ),
           settings: settings,
         );
+      case Routes.chatbot:
+        return MaterialPageRoute(
+          builder: (_) => ChatBotScreen(),
+          settings: settings,
+        );
       case Routes.thankYouPage:
         return MaterialPageRoute(builder: (_) => ThankYouPage());
+      case Routes.classDetails:
+        return MaterialPageRoute(builder: (_) => ClassDetailsScreen());
+      case Routes.paymentScreen:
+        return MaterialPageRoute(builder: (_) => PaymentScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

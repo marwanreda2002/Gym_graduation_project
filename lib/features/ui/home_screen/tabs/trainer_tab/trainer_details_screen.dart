@@ -29,11 +29,11 @@ class _TrainerDetailsPageState extends State<TrainerDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors_Detail.background,
+      // backgroundColor: AppColors_Detail.background,
       appBar: AppBar(
         title: const Text('Trainer Details'),
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors_Detail.white,
+        backgroundColor: AppColors.primaryColor,
+        foregroundColor: AppColors.whiteColor,
       ),
       body: FutureBuilder<TrainerDetails>(
         future: _trainerDetailsFuture,
@@ -72,8 +72,7 @@ class _TrainerDetailsPageState extends State<TrainerDetailsPage> {
         Text('Rating: ${details.rating}',
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         Text('Clients: ${details.clients}',
-            style: const TextStyle(
-                fontSize: 16, color: AppColors_Detail.textSecondary)),
+            style: const TextStyle(fontSize: 16, color: Colors.grey)),
       ],
     );
   }
@@ -85,8 +84,7 @@ class _TrainerDetailsPageState extends State<TrainerDetailsPage> {
         const Text('Experience:',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
-        ...experience.map((e) => Text('• $e',
-            style: const TextStyle(color: AppColors_Detail.textSecondary))),
+        ...experience.map((e) => Text('• $e', style: const TextStyle(color: Colors.grey))),
       ],
     );
   }
@@ -99,11 +97,11 @@ class _TrainerDetailsPageState extends State<TrainerDetailsPage> {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         Text('Facebook: ${social.facebook}',
-            style: const TextStyle(color: AppColors_Detail.textSecondary)),
+            style: const TextStyle(color: Colors.grey)),
         Text('Instagram: ${social.instagram}',
-            style: const TextStyle(color: AppColors_Detail.textSecondary)),
+            style: const TextStyle(color: Colors.grey)),
         Text('WhatsApp: ${social.whatsapp}',
-            style: const TextStyle(color: AppColors_Detail.textSecondary)),
+            style: const TextStyle(color: Colors.grey)),
         const SizedBox(height: 8),
         TextButton(
           onPressed: () {

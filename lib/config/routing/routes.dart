@@ -7,6 +7,9 @@ class Routes {
   static const String ageScreen = '/ageScreen';
   static const String dashboardScreen = '/dashboardScreen';
   static const String trainerTab = '/trainerTab';
+  static const String loginScreen = '/loginScreen';
+  static const String registerScreen = '/registerScreen';
+
   // ignore: constant_identifier_names
   static const String class_Tab = '/class_Tab';
   static const String gallery = '/gallery';
@@ -15,4 +18,7 @@ class Routes {
   static const String techniqueVideosPage = '/techniqueVideosPage';
   static const String trainerRatingPage = '/trainerRatingPage';
   static const String thankYouPage = '/thankYouPage';
+  static const String chatbot = '/chatbot';
+  static const String classDetails = '/classDetails';
+  static const String paymentScreen = '/paymentScreen';
 }

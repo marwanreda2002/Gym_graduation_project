@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app_graduation_project/core/components/resuble_components.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_service.dart';
 
@@ -51,11 +52,11 @@ class _TrainerRatingPageState extends State<TrainerRatingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors_Detail.background,
+      // backgroundColor: AppColors_Detail.background,
       appBar: AppBar(
         title: const Text('rate the trainer'),
-        backgroundColor: AppColors_Detail.primary,
-        foregroundColor: AppColors_Detail.white,
+        backgroundColor: AppColors.primaryColor,
+        foregroundColor: AppColors.whiteColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -72,7 +73,7 @@ class _TrainerRatingPageState extends State<TrainerRatingPage> {
                 max: 5,
                 divisions: 4,
                 label: _rating.toString(),
-                activeColor: AppColors.primary,
+                activeColor: AppColors.primaryColor,
                 onChanged: (value) => setState(() => _rating = value),
               ),
               const SizedBox(height: 20),
@@ -91,8 +92,8 @@ class _TrainerRatingPageState extends State<TrainerRatingPage> {
               const SizedBox(height: 30),
               _isSubmitting
                   ? const CircularProgressIndicator()
-                  : CustomButton(
-                text: 'Send Rating',
+                  : CustomElevatedButton(
+                      text: 'Send Rating',
                 onPressed: () {
                   _submitRating();
                   Navigator.pushNamed(context, Routes.thankYouPage);

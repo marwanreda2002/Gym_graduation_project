@@ -18,17 +18,17 @@ class DashboardScreen extends StatelessWidget {
     double bmi =
         args["weight"] / ((args["height"] / 100) * (args["height"] / 100));
     String result;
-    if (bmi < 18.5)
+    if (bmi < 18.5) {
       result = "Underweight";
-    else if (bmi < 25)
+    } else if (bmi < 25) {
       result = "Normal";
-    else if (bmi < 30)
+    } else if (bmi < 30) {
       result = "Overweight";
-    else if (bmi < 35)
+    } else if (bmi < 35) {
       result = "Obese";
-    else
+    } else {
       result = "Extremely Obese";
-
+    }
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -61,7 +61,7 @@ class DashboardScreen extends StatelessWidget {
             CustomElevatedButton(
               text: "Calculate Again",
               onPressed: () {
-                Navigator.pushNamed(context, Routes.genderScreen);
+                Navigator.pushNamed(context, Routes.homeScreen);
               },
             ),
             SizedBox(

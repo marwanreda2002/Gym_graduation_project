@@ -5,65 +5,133 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 
 class AppStyles {
-  static TextStyle bold36Black = GoogleFonts.jost(
+  static TextStyle bold36Black = GoogleFonts.poppins(
       color: Colors.black, fontSize: 36.sp, fontWeight: FontWeight.bold);
-  static TextStyle bold36Primary = GoogleFonts.jost(
-      color: AppColors.primaryColor, fontSize: 36.sp, fontWeight: FontWeight.bold);
-  static TextStyle bold16Black = GoogleFonts.jost(
-      color: AppColors.blackColor, fontSize: 16.sp, fontWeight: FontWeight.bold);
-  static TextStyle bold18Primary = GoogleFonts.jost(
-    color: AppColors.primaryColor,
-    fontSize: 18.sp,
-  );
-  static TextStyle regular20black = GoogleFonts.jost(
+  static TextStyle bold36Primary = GoogleFonts.poppins(
+      color: AppColors.primaryColor,
+      fontSize: 36.sp,
+      fontWeight: FontWeight.bold);
+  static TextStyle bold16Black = GoogleFonts.poppins(
+      color: AppColors.blackColor,
+      fontSize: 16.sp,
+      fontWeight: FontWeight.bold);
+  static TextStyle bold16primary = GoogleFonts.poppins(
+      color: AppColors.primaryColor,
+      fontSize: 16.sp,
+      fontWeight: FontWeight.bold);
+  static TextStyle bold18Primary = GoogleFonts.poppins(
+      color: AppColors.primaryColor,
+      fontSize: 18.sp,
+      fontWeight: FontWeight.bold);
+  static TextStyle bold20Primary = GoogleFonts.poppins(
+      color: AppColors.primaryColor,
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold);
+  static TextStyle regular20black = GoogleFonts.poppins(
     color: AppColors.blackColor,
     fontWeight: FontWeight.w400,
     fontSize: 20.sp,
   );
-  static TextStyle regular24black = GoogleFonts.jost(
+  static TextStyle regular24black = GoogleFonts.poppins(
     fontWeight: FontWeight.w400,
     color: AppColors.blackColor,
     fontSize: 24.sp,
   );
-  static TextStyle regular24Primary = GoogleFonts.jost(
+  static TextStyle medium24black = GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: AppColors.blackColor,
+    fontSize: 24.sp,
+  );
+  static TextStyle medium18black = GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: AppColors.blackColor,
+    fontSize: 18.sp,
+  );
+  static TextStyle semibold14Black = GoogleFonts.poppins(
+    fontWeight: FontWeight.w600,
+    color: AppColors.blackColor,
+    fontSize: 14.sp,
+  );
+  static TextStyle semibold24Black = GoogleFonts.poppins(
+    fontWeight: FontWeight.w600,
+    color: AppColors.blackColor,
+    fontSize: 24.sp,
+  );
+  static TextStyle bold10Black = GoogleFonts.poppins(
+    fontWeight: FontWeight.bold,
+    color: AppColors.blackColor,
+    fontSize: 10.sp,
+  );
+  static TextStyle regular24Primary = GoogleFonts.poppins(
     fontWeight: FontWeight.w400,
     color: AppColors.primaryColor,
     fontSize: 24.sp,
   );
-  static TextStyle bold24black = GoogleFonts.jost(
+  static TextStyle bold24black = GoogleFonts.poppins(
     color: AppColors.blackColor,
     fontWeight: FontWeight.bold,
-    fontSize: 24,);
-  static TextStyle regular15grey = GoogleFonts.jost(
-    color: AppColors.greyTextColor,
-    fontSize: 15,);
-  static TextStyle regular16black = GoogleFonts.jost(
+    fontSize: 24,
+  );
+  static TextStyle regular15grey = GoogleFonts.poppins(
+      color: AppColors.greyTextColor,
+      fontSize: 15,
+      fontWeight: FontWeight.w400);
+  static TextStyle regular16black = GoogleFonts.poppins(
     color: AppColors.blackColor,
     fontWeight: FontWeight.w400,
     fontSize: 16.sp,
   );
-  static TextStyle regular16primary = GoogleFonts.jost(
+  static TextStyle regular13grey = GoogleFonts.poppins(
+    color: AppColors.darkGreyColor,
+    fontWeight: FontWeight.w400,
+    fontSize: 13.sp,
+  );
+  static TextStyle regular16primary = GoogleFonts.poppins(
     color: AppColors.primaryColor,
-    fontSize: 16,);
-  static TextStyle regular10black = GoogleFonts.jost(
+    fontSize: 16,
+  );
+  static TextStyle regular18primary = GoogleFonts.poppins(
+    color: AppColors.primaryColor,
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
+  );
+  static TextStyle regular18black = GoogleFonts.poppins(
+    color: AppColors.blackColor,
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
+  );
+  static TextStyle regular18white = GoogleFonts.poppins(
+    color: AppColors.whiteColor,
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
+  );
+  static TextStyle regular10black = GoogleFonts.poppins(
     color: AppColors.blackColor,
     fontWeight: FontWeight.w400,
     fontSize: 15.sp,
   );
-  static TextStyle regular80primary = GoogleFonts.jost(
+  static TextStyle regular80primary = GoogleFonts.poppins(
     color: AppColors.primaryColor,
     fontWeight: FontWeight.w400,
     fontSize: 80.sp,
   );
 
-  static TextStyle regular13primary = GoogleFonts.jost(
-    color: AppColors.primaryColor,
-    fontSize: 13,);
-  static TextStyle bold13primary = GoogleFonts.jost(
+  static TextStyle regular13primary = GoogleFonts.poppins(
+      color: AppColors.primaryColor, fontSize: 13, fontWeight: FontWeight.w400);
+  static TextStyle bold13primary = GoogleFonts.poppins(
     color: AppColors.primaryColor,
     fontWeight: FontWeight.bold,
-    fontSize: 13,);
-  static TextStyle regular13black= GoogleFonts.jost(
-    color: AppColors.blackColor,
-    fontSize: 13,);
+    fontSize: 13,
+  );
+  static TextStyle bold14primary = GoogleFonts.poppins(
+    color: AppColors.primaryColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  static TextStyle regular13black = GoogleFonts.poppins(
+      color: AppColors.blackColor, fontSize: 13, fontWeight: FontWeight.w400);
+  static TextStyle regular32black = GoogleFonts.poppins(
+      color: AppColors.blackColor,
+      fontSize: 32.sp,
+      fontWeight: FontWeight.w400);
 }

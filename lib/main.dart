@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app_graduation_project/config/routing/app_router.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
 
+import 'core/api/api_manager.dart';
 import 'core/utils/app_theme.dart';
 import 'core/utils/bloc_observer.dart';
 void main() async{
+  DioHelper.dioInit();
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
@@ -23,7 +25,7 @@ class GymApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.registerScreen,
+        initialRoute: Routes.paymentScreen,
         onGenerateRoute: appRouter.generateRoure,
         theme: AppTheme.lightTheme,
       ),

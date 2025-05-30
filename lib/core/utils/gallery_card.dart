@@ -22,7 +22,7 @@ class GalleryCard extends StatelessWidget {
       height: 214.h,
       margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: GalleryColors.cardBackgroundColor,
+        color: Colors.red,
         borderRadius: BorderRadius.circular(12.0),
         boxShadow: [
           BoxShadow(
@@ -49,7 +49,7 @@ class GalleryCard extends StatelessWidget {
                     ? loadingProgress.cumulativeBytesLoaded /
                     loadingProgress.expectedTotalBytes!
                     : null,
-                color: GalleryColors.accentColor,
+                color: Colors.blue,
               ),
             );
           },

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app_graduation_project/core/utils/trainer_details_model.dart';
 
-import '../../../../../core/utils/app_colors.dart' show AppColors_Detail;
+import '../../../../../core/utils/app_colors.dart'
+    show AppColors, AppColors_Detail;
 
 class TechniqueVideosPage extends StatelessWidget {
   final List<Video> videos;
@@ -13,11 +14,11 @@ class TechniqueVideosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors_Detail.background,
+      // backgroundColor: AppColors_Detail.background,
       appBar: AppBar(
         title: Text(title),
-        backgroundColor: AppColors_Detail.primary,
-        foregroundColor: AppColors_Detail.white,
+        backgroundColor: AppColors.primaryColor,
+        foregroundColor: AppColors.whiteColor,
       ),
       body: ListView.builder(
         itemCount: videos.length,

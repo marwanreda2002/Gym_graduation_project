@@ -111,7 +111,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               decoration: BoxDecoration(
                                 color: currentPageIndex == index
                                     ? AppColors.primaryColor
-                                    : AppColors.darkgreyColor,
+                                    : AppColors.darkGreyColor,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                             ),

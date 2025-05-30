@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_colors.dart' show AppColors_Detail;
+import '../../../../../core/utils/app_colors.dart' show AppColors;
 
 class ThankYouPage extends StatelessWidget {
   const ThankYouPage({super.key});
@@ -8,7 +8,7 @@ class ThankYouPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors_Detail.background,
+      // backgroundColor: AppColors_Detail.background,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24),
@@ -16,7 +16,7 @@ class ThankYouPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.check_circle_outline,
-                  color: AppColors_Detail.primary, size: 100),
+                  color: AppColors.primaryColor, size: 100),
               const SizedBox(height: 20),
               const Text(
                 'شكرًا لك!',
@@ -31,7 +31,7 @@ class ThankYouPage extends StatelessWidget {
               const SizedBox(height: 30),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors_Detail.primary,
+                  backgroundColor: AppColors.primaryColor,
                   padding:
                   const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
                 ),

@@ -7,4 +7,7 @@ class AppImages {
   static String onboardingOne = "assets/images/onboarding_one.png";
   static String onboardingTwo = "assets/images/onboarding_two.png";
   static String onboardingThree = "assets/images/onboarding_three.png";
+  static String boyAvatar = "assets/images/boy_avatar.svg";
+  static String dashboardIconSvg = "assets/images/dashboard_icon_svg.svg";
+  static String filterIcon = "assets/images/filter_icon.png";
 }

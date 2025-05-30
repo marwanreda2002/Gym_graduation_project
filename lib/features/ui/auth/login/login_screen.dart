@@ -30,56 +30,83 @@ class LoginScreen extends StatelessWidget {
           padding:  EdgeInsets.symmetric(horizontal: 27.w),
           child: Form(
             key: viewModel.formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(height:100.h),
-                SvgPicture.asset(
-                  AppImages.logoSvgLight,
-                  semanticsLabel: 'logo',
-                ),
-                SizedBox(height:170.h,),
-                Text("Log in",style: AppStyles.bold24black,),
-                SizedBox(height:  40.h,),
-                CustomTextFormField(
-                  validator: AppValidators.validateEmail,
-                  hintText: "Email",
-                  controller: viewModel.emailController,
-                  prefixIcon: Icon(Icons.email,color: AppColors.primaryColor,),
-                ),
-                SizedBox(height:  26.h,),
-                CustomTextFormField(
-                  validator: AppValidators.validatePassword,
-                  hintText: "Password",
-                  isObscure: true,
-                  suffixIcon: Icons.visibility_off,
-                  prefixIcon: Icon(Icons.lock),
-                  controller: viewModel.passwordController,
-                ),
-                SizedBox(height:  13.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text("Forgot Password?",style: AppStyles.regular13primary,),
-                  ],
-                ),
-                SizedBox(height:  204.h,),
-                CustomElevatedButton(
-                    text: "Log in", onPressed: (){
-                  viewModel.login();
-                }),
-                SizedBox(height:  35.h,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      AppImages.guestIcon,
-                      semanticsLabel: 'guestLogo',
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(height: 100.h),
+                  SvgPicture.asset(
+                    AppImages.logoSvgLight,
+                    semanticsLabel: 'logo',
+                  ),
+                  SizedBox(
+                    height: 170.h,
+                  ),
+                  Text(
+                    "Log in",
+                    style: AppStyles.bold24black,
+                  ),
+                  SizedBox(
+                    height: 40.h,
+                  ),
+                  CustomTextFormField(
+                    validator: AppValidators.validateEmail,
+                    hintText: "Email",
+                    controller: viewModel.emailController,
+                    prefixIcon: Icon(
+                      Icons.email,
+                      color: AppColors.primaryColor,
                     ),
-                    Text("  Login As Guest",style:AppStyles.regular16primary ,)
-                  ],
-                )
-              ],
+                  ),
+                  SizedBox(
+                    height: 26.h,
+                  ),
+                  CustomTextFormField(
+                    validator: AppValidators.validatePassword,
+                    hintText: "Password",
+                    isObscure: true,
+                    suffixIcon: Icons.visibility_off,
+                    prefixIcon: Icon(Icons.lock),
+                    controller: viewModel.passwordController,
+                  ),
+                  SizedBox(
+                    height: 13.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "Forgot Password?",
+                        style: AppStyles.regular13primary,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 204.h,
+                  ),
+                  CustomElevatedButton(
+                      text: "Log in",
+                      onPressed: () {
+                        viewModel.login();
+                      }),
+                  SizedBox(
+                    height: 35.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        AppImages.guestIcon,
+                        semanticsLabel: 'guestLogo',
+                      ),
+                      Text(
+                        "  Login As Guest",
+                        style: AppStyles.regular16primary,
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

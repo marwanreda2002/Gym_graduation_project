@@ -153,3 +153,27 @@ class CustomTextFormField extends StatelessWidget {
   }
 }
 
+class classTrainersButton extends StatelessWidget {
+  classTrainersButton({
+    super.key,
+    required this.onPressed,
+    required this.name,
+  });
+
+  void Function()? onPressed;
+  String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primaryColor,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.r)),
+          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 144.w)
+      ),
+      onPressed: onPressed,
+      child: Text(name, style: AppStyles.regular18white,),);
+  }
+}
+
