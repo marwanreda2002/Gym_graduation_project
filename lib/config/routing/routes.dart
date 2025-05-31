@@ -15,7 +15,7 @@ class Routes {
   static const String gallery = '/gallery';
   static const String myBookmarksScreen = '/myBookmarksScreen';
   static const String trainerDetailsPage = '/trainerDetailsPage';
-  static const String techniqueVideosPage = '/techniqueVideosPage';
+  static const String techniqueDetails = '/techniqueVideosPage';
   static const String trainerRatingPage = '/trainerRatingPage';
   static const String thankYouPage = '/thankYouPage';
   static const String chatbot = '/chatbot';

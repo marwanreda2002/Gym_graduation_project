@@ -9,18 +9,14 @@ import 'package:gym_app_graduation_project/features/ui/home_screen/home_screen.d
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/Book/my_bookmarks_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/chat_bot/chat_bot_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/class_details_screen.dart';
-import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/Payment/payment_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_details_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_rating_page.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_tab.dart'
     show TrainerTab;
 
-import '../../core/utils/trainer_details_model.dart' show Video;
 import '../../features/ui/BMI/height_screen.dart';
-import '../../features/ui/home_screen/tabs/Gallery/gallery.dart';
-import '../../features/ui/home_screen/tabs/classes_tab/classes_tab.dart';
 import '../../features/ui/home_screen/tabs/trainer_tab/Thank You.dart';
-import '../../features/ui/home_screen/tabs/trainer_tab/techniecs.dart';
+import '../../features/ui/home_screen/tabs/trainer_tab/techniques_details.dart';
 
 class AppRouter {
   Route generateRoure(RouteSettings settings) {
@@ -58,19 +54,13 @@ class AppRouter {
             settings: settings,
           ),
         );
-      case Routes.techniqueVideosPage:
-        final args = settings.arguments as Map<String, dynamic>;
+      case Routes.techniqueDetails:
         return MaterialPageRoute(
-          builder: (_) => TechniqueVideosPage(
-            videos: args['videos'] as List<Video>,
-            title: args['title'] as String,
-          ),
+          builder: (_) => TechniquesDetails(),
         );
       case Routes.trainerRatingPage:
         return MaterialPageRoute(
-          builder: (_) => TrainerRatingPage(
-            trainerId: settings.arguments as int,
-          ),
+          builder: (_) => TrainerRatingScreen(),
           settings: settings,
         );
       case Routes.chatbot:
@@ -82,8 +72,6 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => ThankYouPage());
       case Routes.classDetails:
         return MaterialPageRoute(builder: (_) => ClassDetailsScreen());
-      case Routes.paymentScreen:
-        return MaterialPageRoute(builder: (_) => PaymentScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

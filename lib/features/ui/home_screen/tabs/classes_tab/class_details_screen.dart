@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gym_app_graduation_project/config/routing/routes.dart';
 import 'package:gym_app_graduation_project/core/components/resuble_components.dart';
-import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
+import 'package:pay_with_paymob/pay_with_paymob.dart';
+
+import '../Payment/payment_constant.dart';
 
 class ClassDetailsScreen extends StatelessWidget {
   const ClassDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    PaymentData.initialize(
+      apiKey: PaymentConstant.paymentApiKey,
+      iframeId: "927415",
+      integrationCardId: "${PaymentConstant.cardIdIntegration}",
+      integrationMobileWalletId: "${PaymentConstant.walletIdIntegration}",
+      userData: UserData(
+        name: "Marwan",
+        email: "masdasd@gmail.com",
+        lastName: "Reda",
+        phone: "01211681903",
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -58,7 +71,19 @@ class ClassDetailsScreen extends StatelessWidget {
             Spacer(),
             classTrainersButton(
               onPressed: () {
-                Navigator.pushNamed(context, Routes.paymentScreen);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PaymentView(
+                              onPaymentSuccess: () {
+                                Future.delayed(
+                                  Duration(seconds: 5),
+                                  () => Navigator.pop(context),
+                                );
+                              },
+                              price: 300,
+                              onPaymentError: () => print("error"),
+                            )));
               },
               name: "Book Now",
             ),

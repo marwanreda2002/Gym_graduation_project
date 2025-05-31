@@ -11,9 +11,13 @@ class DioHelper {
     ));
   }
 
-  static Future<Response> postData(
-      {required String endPoint, required Map<String, dynamic> data}) {
-    return dio.post(endPoint, data: data);
+  static Future<Response> postData({required String endPoint, required Map<
+      String,
+      dynamic> data, String? token}) {
+    return dio.post(endPoint, data: data, options: Options(headers: {
+      'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
+    }));
   }
 
   static Future<Response> getData({required String endPoint, required Map<

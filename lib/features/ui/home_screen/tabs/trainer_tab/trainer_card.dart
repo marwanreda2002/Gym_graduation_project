@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
@@ -23,14 +22,6 @@ class TrainerCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(color: Color(0xffE7E7E7), width: 2),
           color: Colors.white,
-          // boxShadow:[
-          //   BoxShadow(
-          //     color: AppColors.greyColor,
-          //     blurRadius: 5,
-          //     spreadRadius: 5,
-          //     offset: Offset(-2,2 )
-          //   )
-          // ],
         ),
         child: Column(
           children: [

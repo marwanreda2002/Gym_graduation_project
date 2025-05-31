@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
 
 import '../../../../../core/utils/app_colors.dart' show AppColors;
 
@@ -8,42 +10,42 @@ class ThankYouPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors_Detail.background,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.check_circle_outline,
-                  color: AppColors.primaryColor, size: 100),
-              const SizedBox(height: 20),
-              const Text(
-                'شكرًا لك!',
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Spacer(),
+            ImageIcon(
+              AssetImage("assets/images/thank_icon.png"),
+              color: AppColors.primaryColor,
+              size: 121,
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: Text(
+                "Thanks for Rating",
+                style: AppStyles.bold24primary,
               ),
-              const SizedBox(height: 10),
-              const Text(
-                'ur request has been submitted successfully.',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16),
+            ),
+            Spacer(),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(7.r)),
+                backgroundColor: AppColors.primaryColor,
+                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
               ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primaryColor,
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                ),
-                onPressed: () {
-                  Navigator.pop(context); //
-                },
-                child: const Text(
-                  'Back to Home',
-                ),
-              )
-            ],
-          ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Done',
+                style: AppStyles.regular18white,
+              ),
+            )
+          ],
         ),
       ),
     );

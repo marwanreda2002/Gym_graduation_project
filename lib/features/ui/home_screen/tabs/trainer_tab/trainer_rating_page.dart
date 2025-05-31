@@ -1,106 +1,154 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app_graduation_project/core/components/resuble_components.dart';
-import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
-import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_service.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/Thank%20You.dart';
 
-import '../../../../../config/routing/routes.dart' show Routes;
-import '../../../../../core/utils/app_styels.dart' show CustomButton;
-import '../../../../../core/utils/trainer_details_model.dart' show RatingData;
+import '../../../../../core/components/resuble_components.dart';
 
-class TrainerRatingPage extends StatefulWidget {
-  final int trainerId;
-
-  const TrainerRatingPage({super.key, required this.trainerId});
-
-  @override
-  State<TrainerRatingPage> createState() => _TrainerRatingPageState();
-}
-
-class _TrainerRatingPageState extends State<TrainerRatingPage> {
-  final _formKey = GlobalKey<FormState>();
-  double _rating = 3;
-  final TextEditingController _commentController = TextEditingController();
-  bool _isSubmitting = false;
-
-  void _submitRating() async {
-    if (!_formKey.currentState!.validate()) return;
-
-    setState(() => _isSubmitting = true);
-
-    final ratingData = RatingData(
-      rating: _rating,
-      comment: _commentController.text.trim(),
-    );
-
-    try {
-      await TrainerService.submitRating(widget.trainerId, ratingData);
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Successfully rated the trainer')),
-        );
-        Navigator.pop(context);
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error_When Send The Scoer:$e')),
-      );
-    } finally {
-      setState(() => _isSubmitting = false);
-    }
-  }
+class TrainerRatingScreen extends StatelessWidget {
+  const TrainerRatingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: AppColors_Detail.background,
-      appBar: AppBar(
-        title: const Text('rate the trainer'),
-        backgroundColor: AppColors.primaryColor,
-        foregroundColor: AppColors.whiteColor,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Text('choise The rated',
-                  style: Theme.of(context).textTheme.titleLarge),
-              const SizedBox(height: 12),
-              Slider(
-                value: _rating,
-                min: 1,
-                max: 5,
-                divisions: 4,
-                label: _rating.toString(),
-                activeColor: AppColors.primaryColor,
-                onChanged: (value) => setState(() => _rating = value),
+      backgroundColor: Colors.grey[100],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Header with image and back button
+            SizedBox(
+              height: 330.h,
+              child: Stack(
+                children: [
+                  SizedBox(
+                    height: 252.h,
+                    width: double.infinity,
+                    child: Image.asset(
+                      'assets/images/rating_bg.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Positioned(
+                    top: 40,
+                    left: 16,
+                    child: CustomBackButtonCircle(),
+                  ),
+                  Positioned(
+                    top: 141,
+                    left: 125,
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color(0xff378CE7),
+                                Color(0xff0f2d49),
+                              ]),
+                          borderRadius: BorderRadius.circular(200)),
+                      child: CircleAvatar(
+                        radius: 90.r,
+                        backgroundImage: AssetImage(
+                            'assets/images/rating_trainer_image.png'),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _commentController,
-                maxLines: 5,
-                decoration: const InputDecoration(
-                  labelText: 'write your comment',
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) {
-                  if (value!.trim().isEmpty) return 'please enter a comment';
-                  return null;
-                },
+            ),
+
+            SizedBox(height: 24.h),
+
+            Text(
+              'Mohamed El barawy',
+              style: AppStyles.semibold18Black,
+            ),
+            SizedBox(height: 24.h),
+
+            RatingBarIndicator(
+              rating: 4.5,
+              itemBuilder: (context, index) => const Icon(
+                Icons.star,
+                color: Colors.amber,
               ),
-              const SizedBox(height: 30),
-              _isSubmitting
-                  ? const CircularProgressIndicator()
-                  : CustomElevatedButton(
-                      text: 'Send Rating',
+              itemCount: 5,
+              itemSize: 30.0,
+            ),
+
+            SizedBox(height: 34.h),
+
+            Text(
+              'How was your experience with barawy',
+              style: AppStyles.regular15black,
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            Text(
+              'your overall rating for this classes',
+              style: AppStyles.regular14grey.copyWith(color: Color(0xff666666)),
+            ),
+
+            SizedBox(height: 27.h),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Add detailed review",
+                    style: AppStyles.regular16black,
+                  ),
+                  SizedBox(height: 10.h),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      border: Border.all(color: Colors.grey.shade300),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: const TextField(
+                      maxLines: 5,
+                      decoration: InputDecoration(
+                        hintText: 'Enter here...',
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            SizedBox(height: 150.h),
+
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 50,
+              child: ElevatedButton(
                 onPressed: () {
-                  _submitRating();
-                  Navigator.pushNamed(context, Routes.thankYouPage);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ThankYouPage(),
+                      ));
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(7.r)),
+                ),
+                child: Text(
+                  "Submit",
+                  style: AppStyles.regular18white,
+                ),
               ),
-            ],
-          ),
+            ),
+
+            const SizedBox(height: 30),
+          ],
         ),
       ),
     );
