@@ -21,4 +21,6 @@ class Routes {
   static const String chatbot = '/chatbot';
   static const String classDetails = '/classDetails';
   static const String paymentScreen = '/paymentScreen';
+  static const String updateProfileScreen = '/updateProfile';
+  static const String passwordManagerScreen = '/password manager';
 }

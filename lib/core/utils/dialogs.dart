@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app_colors.dart';
 import 'app_styels.dart';
@@ -69,21 +70,74 @@ class CustomDialog {
           )));
     }
     showDialog(
-        barrierDismissible: false,
+        barrierDismissible: true,
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: AppColors.greyColor,
-            title: Text(
-              title,
-              style: AppStyles.bold18Primary,
+            backgroundColor: AppColors.whiteColor,
+            title: Center(
+              child: Text(
+                title,
+                style: AppStyles.regular17red,
+              ),
             ),
             content: Text(
               message,
-              style: AppStyles.regular16black,
+              style:
+                  AppStyles.regular16black.copyWith(color: Color(0xff666666)),
             ),
             actions: actions,
           );
         });
+  }
+
+  static void showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        actionsPadding: EdgeInsets.only(left: 20.w, bottom: 18.h, top: 35.h),
+        buttonPadding: EdgeInsets.only(left: 150.w),
+        titlePadding: EdgeInsets.only(bottom: 35.h, top: 14.h),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.r),
+        ),
+        title: Center(
+          child: Text("log out", style: AppStyles.regular17red),
+        ),
+        content: Text(
+          "Are you sure you want to log out?",
+          textAlign: TextAlign.center,
+          style: AppStyles.regular16black.copyWith(color: Color(0xff666666)),
+        ),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+            child: Text(
+              "Cancel",
+              style: AppStyles.regular14grey.copyWith(color: Colors.black),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Add your logout logic here
+              Navigator.of(ctx).pop(); // Close the dialog
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(7.r),
+              ),
+            ),
+            child: Text(
+              "Yes, Log out",
+              style: AppStyles.regular14white,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -3,17 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gradient_icon/gradient_icon.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_images.dart';
-import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_card.dart';
 import 'package:gym_app_graduation_project/core/utils/trainer_model.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/class_card.dart';
-import 'package:syncfusion_flutter_gauges/gauges.dart';
-
-import '../../../../../config/routing/routes.dart';
-import '../../../../../core/utils/app_styels.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/home_tab/qr_code_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_card.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+
+import '../../../../../core/utils/app_styels.dart';
 
 class HomeTab extends StatelessWidget {
   HomeTab({super.key});
@@ -53,20 +51,29 @@ class HomeTab extends StatelessWidget {
                           fontWeight: FontWeight.bold, fontSize: 36.sp),
                     )),
                 Spacer(),
-                ShaderMask(
-                    blendMode: BlendMode.srcIn,
-                    shaderCallback: (Rect bounds) => LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            AppColors.primaryColor,
-                            AppColors.blackColor,
-                          ],
-                        ).createShader(bounds),
-                    child: ImageIcon(
-                      AssetImage("assets/images/QR_icon.png"),
-                      size: 32,
-                    )),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QrCodeScreen(),
+                        ));
+                  },
+                  child: ShaderMask(
+                      blendMode: BlendMode.srcIn,
+                      shaderCallback: (Rect bounds) => LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              AppColors.primaryColor,
+                              AppColors.blackColor,
+                            ],
+                          ).createShader(bounds),
+                      child: ImageIcon(
+                        AssetImage("assets/images/QR_icon.png"),
+                        size: 32,
+                      )),
+                ),
               ],
             ),
             SizedBox(

@@ -5,10 +5,13 @@ import 'package:gym_app_graduation_project/features/ui/BMI/dashboard_screen.dart
 import 'package:gym_app_graduation_project/features/ui/BMI/genedre_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/intro_bmi_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/weight_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/auth/login/login_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/home_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/Book/my_bookmarks_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/chat_bot/chat_bot_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/class_details_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/profile_tab/password_manager_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/profile_tab/update_profile.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_details_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_rating_page.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_tab.dart'
@@ -23,6 +26,8 @@ class AppRouter {
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(builder: (_) => HomeScreen());
+      case Routes.loginScreen:
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case Routes.introBmiScreen:
         return MaterialPageRoute(builder: (_) => const IntroBmiScreen());
       case Routes.genderScreen:
@@ -72,6 +77,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => ThankYouPage());
       case Routes.classDetails:
         return MaterialPageRoute(builder: (_) => ClassDetailsScreen());
+      case Routes.updateProfileScreen:
+        return MaterialPageRoute(builder: (_) => UpdateProfile());
+      case Routes.passwordManagerScreen:
+        return MaterialPageRoute(builder: (_) => PasswordManagerScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
