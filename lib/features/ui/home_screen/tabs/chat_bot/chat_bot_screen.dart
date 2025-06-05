@@ -13,8 +13,7 @@ class ChatBotScreen extends StatefulWidget {
 class _ChatBotScreenState extends State<ChatBotScreen> {
   final List<Map<String, String>> messages = [];
   final TextEditingController controller = TextEditingController();
-  final String apiKey =
-      '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';
+  final String apiKey = "";
 
   Future<void> sendMessage(String message) async {
     setState(() {
