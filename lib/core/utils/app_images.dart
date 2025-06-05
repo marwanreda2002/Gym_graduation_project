@@ -10,4 +10,5 @@ class AppImages {
   static String boyAvatar = "assets/images/boy_avatar.svg";
   static String dashboardIconSvg = "assets/images/dashboard_icon_svg.svg";
   static String filterIcon = "assets/images/filter_icon.png";
+  static String bodyStateIcon = "assets/images/body_state_icon.svg";
 }

@@ -20,10 +20,10 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
+        padding: EdgeInsets.symmetric(vertical: 16.5.h, horizontal: 20.w),
         backgroundColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.r),
+          borderRadius: BorderRadius.circular(8.r),
         ),
       ),
       onPressed: onPressed,
@@ -103,7 +103,7 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onChanged,
       obscureText: isObscure ?? false,
       controller: controller,
-      style: AppStyles.regular16primary,
+      style: AppStyles.regular16black,
       cursorColor: AppColors.primaryColor,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(

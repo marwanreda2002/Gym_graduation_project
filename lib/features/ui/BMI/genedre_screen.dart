@@ -6,6 +6,7 @@ import 'package:gym_app_graduation_project/core/utils/app_images.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
 
 import '../../../core/components/resuble_components.dart';
+import '../../../core/utils/cache_helper.dart';
 
 enum Gender { male, female }
 
@@ -77,6 +78,9 @@ class _GenderScreenState extends State<GenderScreen> {
                 if (selectedGender != null) {
                   Navigator.pushNamed(context, Routes.heightScreen,
                       arguments: {"gender": selectedGender});
+                  CacheHelper.saveData(
+                      key: "gender",
+                      value: selectedGender.toString().split(".").last);
                   // Navigate or save data
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(

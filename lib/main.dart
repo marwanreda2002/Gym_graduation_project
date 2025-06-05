@@ -7,10 +7,13 @@ import 'package:gym_app_graduation_project/config/routing/routes.dart';
 import 'core/api/api_manager.dart';
 import 'core/utils/app_theme.dart';
 import 'core/utils/bloc_observer.dart';
+import 'core/utils/cache_helper.dart';
+
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  CacheHelper.init();
   DioHelper.dioInit();
   Bloc.observer = MyBlocObserver();
-  WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   runApp( GymApp(appRouter: AppRouter(),));
 }
@@ -25,7 +28,7 @@ class GymApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.homeScreen,
+        initialRoute: Routes.chatbot,
         onGenerateRoute: appRouter.generateRoure,
         theme: AppTheme.lightTheme,
       ),

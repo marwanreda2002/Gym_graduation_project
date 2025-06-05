@@ -6,6 +6,7 @@ import 'package:gym_app_graduation_project/core/utils/app_images.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
 
 import '../../../core/components/resuble_components.dart';
+import '../../../core/utils/cache_helper.dart';
 
 class AgeScreen extends StatefulWidget {
   const AgeScreen({super.key});
@@ -132,6 +133,8 @@ class _AgeScreenState extends State<AgeScreen> {
                         "height": args["height"],
                         "age": selectedAge
                       });
+                  CacheHelper.saveData(key: "age", value: selectedAge);
+                  CacheHelper.saveData(key: "isHome", value: 1);
                 }
               },
             ),

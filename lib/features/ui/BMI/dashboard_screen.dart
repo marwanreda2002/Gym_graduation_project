@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
+import 'package:gym_app_graduation_project/core/utils/cache_helper.dart';
 
 import '../../../core/components/resuble_components.dart';
 import '../../../core/utils/app_colors.dart';
@@ -34,7 +35,7 @@ class DashboardScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(height: 40.h),
             Align(
@@ -48,20 +49,35 @@ class DashboardScreen extends StatelessWidget {
             infoRow(Icons.height, "Height", args["height"].toString()),
             infoRow(Icons.monitor_weight, "Weight", args["weight"].toString()),
             SizedBox(height: 50.h),
-            Text("Your BMI shows that you are $result",
-                style: AppStyles.bold16Black),
-            SizedBox(height: 50.h),
-            Text(bmi.toStringAsFixed(1),
-                style: TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold)),
+            Center(
+              child: Text("Your body mass index (BMI) is",
+                  style: AppStyles.regular20black),
+            ),
+            SizedBox(height: 26.h),
+            Center(
+              child: Text(bmi.toStringAsFixed(1),
+                  style:
+                      TextStyle(fontSize: 32.sp, fontWeight: FontWeight.bold)),
+            ),
+            SizedBox(height: 39.h),
+            Center(
+              child: Text("Your BMI shows that you are $result",
+                  style: AppStyles.regular16black),
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 20.h),
+              padding: EdgeInsets.symmetric(vertical: 35.h),
               child: _bmiIndicator(bmi),
             ),
             Spacer(),
             CustomElevatedButton(
-              text: "Calculate Again",
+              text: CacheHelper.getData(key: "isHome") == null
+                  ? "Calculate Again"
+                  : "Get Started",
+              textStyle: AppStyles.regular18white,
               onPressed: () {
-                Navigator.pushNamed(context, Routes.homeScreen);
+                CacheHelper.getData(key: "isHome") == null
+                    ? Navigator.pushNamed(context, Routes.introBmiScreen)
+                    : Navigator.pushNamed(context, Routes.homeScreen);
               },
             ),
             SizedBox(

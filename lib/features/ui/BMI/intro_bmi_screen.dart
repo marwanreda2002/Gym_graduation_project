@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
 import 'package:gym_app_graduation_project/core/components/resuble_components.dart';
-import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
 
 class IntroBmiScreen extends StatelessWidget {
@@ -13,18 +12,7 @@ class IntroBmiScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundColor: AppColors.primaryColor,
-            child: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-        ),
+        leading: CustomBackButtonCircle(),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),

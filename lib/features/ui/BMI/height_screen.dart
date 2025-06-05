@@ -6,6 +6,7 @@ import 'package:gym_app_graduation_project/core/utils/app_images.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
 
 import '../../../core/components/resuble_components.dart';
+import '../../../core/utils/cache_helper.dart';
 
 class HeightScreen extends StatefulWidget {
   const HeightScreen({super.key});
@@ -192,6 +193,7 @@ class _HeightScreenState extends State<HeightScreen> {
               text: "Continue",
               onPressed: () {
                 if (selectedHeight != null) {
+                  CacheHelper.saveData(key: "height", value: selectedHeight);
                   Navigator.pushNamed(context, Routes.weightScreen,
                       arguments: {"gender": gender, "height": selectedHeight});
                 } else {

@@ -5,12 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_images.dart';
+import 'package:gym_app_graduation_project/core/utils/cache_helper.dart';
 import 'package:gym_app_graduation_project/core/utils/trainer_model.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/class_card.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/home_tab/qr_code_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_card.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
+import '../../../../../config/routing/routes.dart';
 import '../../../../../core/utils/app_styels.dart';
 
 class HomeTab extends StatelessWidget {
@@ -24,6 +26,7 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CacheHelper.removeData(key: "isHome");
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 40.h),
@@ -155,24 +158,38 @@ class HomeTab extends StatelessWidget {
                 SizedBox(
                   width: 10.w,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 5.w),
-                  width: 153.w,
-                  height: 78.h,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.r),
-                      border: Border.all(color: Color(0xffCACACA), width: 1.5),
-                      color: Colors.white),
-                  child: Row(children: [
-                    Text(
-                      "Body Stats",
-                      style: AppStyles.medium18black,
-                    ),
-                    SizedBox(
-                      width: 3.w,
-                    ),
-                    SvgPicture.asset(AppImages.dashboardIconSvg),
-                  ]),
+                InkWell(
+                  onTap: () {
+                    print(CacheHelper.getData(key: "gender"));
+                    print(CacheHelper.getData(key: "weight"));
+                    print(CacheHelper.getData(key: "height"));
+                    Navigator.pushNamed(context, Routes.dashboardScreen,
+                        arguments: {
+                          "gender": CacheHelper.getData(key: "gender"),
+                          "weight": CacheHelper.getData(key: "weight"),
+                          "height": CacheHelper.getData(key: "height"),
+                        });
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 5.w),
+                    width: 153.w,
+                    height: 78.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.r),
+                        border:
+                            Border.all(color: Color(0xffCACACA), width: 1.5),
+                        color: Colors.white),
+                    child: Row(children: [
+                      Text(
+                        "Body Stats",
+                        style: AppStyles.medium18black,
+                      ),
+                      SizedBox(
+                        width: 7.w,
+                      ),
+                      SvgPicture.asset(AppImages.bodyStateIcon),
+                    ]),
+                  ),
                 ),
               ],
             ),
