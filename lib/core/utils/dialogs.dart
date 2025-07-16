@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gym_app_graduation_project/core/cache/cache_helper.dart';
 
+import '../../config/routing/routes.dart';
 import 'app_colors.dart';
 import 'app_styels.dart';
 
@@ -124,6 +126,8 @@ class CustomDialog {
             onPressed: () {
               // Add your logout logic here
               Navigator.of(ctx).pop(); // Close the dialog
+              CashHelper.clearAllData();
+              Navigator.pushReplacementNamed(context, Routes.loginScreen);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,

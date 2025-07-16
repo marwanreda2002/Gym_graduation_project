@@ -8,7 +8,7 @@ import '../utils/app_images.dart';
 class CustomElevatedButton extends StatelessWidget {
   final String text;
   final TextStyle? textStyle;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   const CustomElevatedButton({
     super.key,
@@ -20,14 +20,15 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 16.5.h, horizontal: 20.w),
+        padding: EdgeInsets.symmetric(vertical: 16.5.h),
         backgroundColor: AppColors.primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.r),
         ),
+        minimumSize: Size(double.infinity, 60.h),
       ),
       onPressed: onPressed,
-      child: Text(text, style:textStyle?? AppStyles.regular24black),
+      child: Text(text, style: textStyle ?? AppStyles.regular18white),
     );
   }
 }

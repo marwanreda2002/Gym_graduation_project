@@ -1,12 +1,39 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
+import 'package:gym_app_graduation_project/core/cache/cache_helper.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
 import 'package:gym_app_graduation_project/core/utils/dialogs.dart';
 
-class ProfileTab extends StatelessWidget {
+import '../../../../../core/utils/cache_helper.dart';
+
+class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});
+
+  @override
+  State<ProfileTab> createState() => _ProfileTabState();
+}
+
+class _ProfileTabState extends State<ProfileTab> {
+  String? _imagePath;
+
+  @override
+  // void initState() {
+  //   super.initState();
+  //   _loadUserImage();
+  // }
+
+  // void _loadUserImage() {
+  //   final path = CashHelper.getData(key: 'user_image');
+  //   if (path != null && path is String) {
+  //     setState(() {
+  //       _imagePath = path;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +49,18 @@ class ProfileTab extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20.h),
-            CircleAvatar(
-                radius: 80,
-                backgroundImage: AssetImage("assets/images/profile_image.png")),
+            _buildProfileImage(),
             SizedBox(height: 10.h),
             Text(
-              "Mohamed El Barawy",
+              CacheHelper.getData(key: 'name'),
               style: AppStyles.medium18primary,
             ),
             SizedBox(height: 5.h),
-            Text("Mohamed902@gmail.com",
+            Text(CacheHelper.getData(key: 'email'),
                 style:
                     AppStyles.regular13grey.copyWith(color: Color(0xff666666))),
             SizedBox(height: 5.h),
-            Text("01018057488",
+            Text(CacheHelper.getData(key: 'phone'),
                 style:
                     AppStyles.regular13grey.copyWith(color: Color(0xff666666))),
             SizedBox(height: 30.h),
@@ -121,6 +146,13 @@ class ProfileTab extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildProfileImage() {
+    return const CircleAvatar(
+      radius: 80,
+      backgroundImage: AssetImage("assets/images/profile_image.png"),
     );
   }
 }

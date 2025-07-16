@@ -1,24 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gym_app_graduation_project/config/routing/routes.dart';
+import 'package:gym_app_graduation_project/core/components/resuble_components.dart';
+import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
-import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/Thank%20You.dart';
+import 'package:gym_app_graduation_project/core/utils/trainer_model.dart';
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/Thank You.dart';
 
-import '../../../../../core/components/resuble_components.dart';
+class TrainerRatingScreen extends StatefulWidget {
+  final Trainer? trainer;
 
-class TrainerRatingScreen extends StatelessWidget {
-  const TrainerRatingScreen({super.key});
+  const TrainerRatingScreen({
+    super.key,
+    this.trainer,
+  });
+
+  @override
+  State<TrainerRatingScreen> createState() => _TrainerRatingScreenState();
+}
+
+class _TrainerRatingScreenState extends State<TrainerRatingScreen> {
+  double rating = 0;
+  final TextEditingController commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final trainer = widget.trainer;
+
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Header with image and back button
-            SizedBox(
-              height: 330.h,
+            Container(
+              height: 335.h,
               child: Stack(
                 children: [
                   SizedBox(
@@ -50,7 +66,7 @@ class TrainerRatingScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(200)),
                       child: CircleAvatar(
                         radius: 90.r,
-                        backgroundImage: AssetImage(
+                        backgroundImage: AssetImage(trainer?.imagePath ??
                             'assets/images/rating_trainer_image.png'),
                       ),
                     ),
@@ -62,13 +78,13 @@ class TrainerRatingScreen extends StatelessWidget {
             SizedBox(height: 24.h),
 
             Text(
-              'Mohamed El barawy',
+              trainer?.name ?? 'Trainer Name',
               style: AppStyles.semibold18Black,
             ),
             SizedBox(height: 24.h),
 
             RatingBarIndicator(
-              rating: 4.5,
+              rating: trainer?.rating ?? 4.5,
               itemBuilder: (context, index) => const Icon(
                 Icons.star,
                 color: Colors.amber,

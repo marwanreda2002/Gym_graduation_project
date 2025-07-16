@@ -4,15 +4,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart'; // Add this package in pubspec.yaml
+import 'package:gym_app_graduation_project/core/utils/trainer_model.dart';
 
 class TrainerCard extends StatelessWidget {
-  const TrainerCard({super.key});
+  final Trainer trainer;
+
+  const TrainerCard({super.key, required this.trainer});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, Routes.trainerDetailsPage);
+        Navigator.pushNamed(context, Routes.trainerDetailsPage,
+            arguments: trainer);
       },
       child: Container(
         padding: EdgeInsets.only(left: 3.w, right: 3.w, top: 3.h),
@@ -25,11 +29,14 @@ class TrainerCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(
-              "assets/images/trainer_image.png",
-              width: 194.w,
-              height: 110.h,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: Image.asset(
+                trainer.imagePath,
+                width: 194.w,
+                height: 110.h,
+                fit: BoxFit.cover,
+              ),
             ),
             SizedBox(
               height: 15.h,
@@ -39,9 +46,12 @@ class TrainerCard extends StatelessWidget {
                 SizedBox(
                   width: 5.w,
                 ),
-                Text(
-                  "Fady Fouad",
-                  style: AppStyles.regular18black,
+                Expanded(
+                  child: Text(
+                    trainer.name,
+                    style: AppStyles.regular18black,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 SizedBox(
                   width: 5.w,
@@ -49,36 +59,18 @@ class TrainerCard extends StatelessWidget {
                 Column(
                   children: [
                     Row(
-                      children: [
-                        Icon(
+                      children: List.generate(5, (index) {
+                        return Icon(
                           Icons.star,
-                          color: Colors.yellow,
+                          color: index < trainer.rating.floor()
+                              ? Colors.yellow
+                              : Colors.grey[300],
                           size: 15,
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                          size: 15,
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                          size: 15,
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                          size: 15,
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                          size: 15,
-                        ),
-                      ],
+                        );
+                      }),
                     ),
                     Text(
-                      "(150 Review)",
+                      "(${trainer.reviews} Review)",
                       style: GoogleFonts.poppins(
                         color: AppColors.greyTextColor,
                         fontSize: 10.sp,

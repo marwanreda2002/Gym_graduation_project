@@ -42,3 +42,10 @@ android {
 flutter {
     source = "../.."
 }
+dependencies {
+    implementation 'com.google.firebase:firebase-analytics' // optional
+    // You can add others later like Firestore, Auth, etc.
+}
+apply plugin: 'com.google.gms.google-services'
+
+

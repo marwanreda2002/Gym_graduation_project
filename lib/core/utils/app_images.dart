@@ -7,8 +7,15 @@ class AppImages {
   static String onboardingOne = "assets/images/onboarding_one.png";
   static String onboardingTwo = "assets/images/onboarding_two.png";
   static String onboardingThree = "assets/images/onboarding_three.png";
-  static String boyAvatar = "assets/images/boy_avatar.svg";
+
+  // static String boyAvatar = "assets/images/boy_avatar.svg";
   static String dashboardIconSvg = "assets/images/dashboard_icon_svg.svg";
   static String filterIcon = "assets/images/filter_icon.png";
   static String bodyStateIcon = "assets/images/body_state_icon.svg";
+
+  static String get introBmi => 'assets/images/intro_bmi.png';
+
+  static String get boyAvatar => 'assets/images/boy_avatar.png';
+
+  static String get girlAvatar => 'assets/images/female_avatar.png';
 }

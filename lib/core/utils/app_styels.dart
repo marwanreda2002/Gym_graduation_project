@@ -6,6 +6,8 @@ import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 class AppStyles {
   static TextStyle bold36Black = GoogleFonts.poppins(
       color: Colors.black, fontSize: 36.sp, fontWeight: FontWeight.bold);
+  static TextStyle regular14Black = GoogleFonts.poppins(
+      color: Colors.black, fontSize: 14.sp, fontWeight: FontWeight.w500);
   static TextStyle bold36Primary = GoogleFonts.poppins(
       color: AppColors.primaryColor,
       fontSize: 36.sp,
@@ -59,6 +61,11 @@ class AppStyles {
     color: AppColors.blackColor,
     fontSize: 16.sp,
   );
+  static TextStyle medium16white = GoogleFonts.poppins(
+    fontWeight: FontWeight.w500,
+    color: AppColors.whiteColor,
+    fontSize: 16.sp,
+  );
   static TextStyle medium16primary = GoogleFonts.poppins(
     fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
@@ -103,6 +110,11 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.primaryColor,
     fontSize: 24.sp,
+  );
+  static TextStyle regular12White = GoogleFonts.poppins(
+    fontWeight: FontWeight.w400,
+    color: AppColors.whiteColor,
+    fontSize: 12.sp,
   );
   static TextStyle bold24black = GoogleFonts.poppins(
     color: AppColors.blackColor,

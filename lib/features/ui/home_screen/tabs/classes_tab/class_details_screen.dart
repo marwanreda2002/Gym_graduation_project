@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app_graduation_project/core/components/resuble_components.dart';
 import 'package:gym_app_graduation_project/core/utils/app_styels.dart';
+import 'package:gym_app_graduation_project/data/models/class_model.dart';
 import 'package:pay_with_paymob/pay_with_paymob.dart';
 
 import '../Payment/payment_constant.dart';
 
 class ClassDetailsScreen extends StatelessWidget {
-  const ClassDetailsScreen({super.key});
+  final ClassModel classModel;
+
+  const ClassDetailsScreen({super.key, required this.classModel});
 
   @override
   Widget build(BuildContext context) {
@@ -36,37 +39,34 @@ class ClassDetailsScreen extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(7.r),
               child: Image.asset(
-                "assets/images/zomba_image.png",
+                classModel.imageUrl,
                 width: 374.w,
                 height: 236.h,
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(
               height: 34.h,
             ),
-            Text("Zomba class", style: AppStyles.regular32black),
+            Text(classModel.name, style: AppStyles.regular32black),
             SizedBox(
               height: 38.h,
             ),
             classDataWidget(
               name: "Trainer:",
-              data: "Kareem Abdelaziz",
+              data: classModel.trainerName,
             ),
             classDataWidget(
               name: "Time:   ",
-              data: "05:00 to 06:00 PM",
-            ),
-            classDataWidget(
-              name: "Date:   ",
-              data: "07 DEC 2024",
+              data: classModel.timing,
             ),
             classDataWidget(
               name: "Spots:  ",
-              data: "15 left",
+              data: "${classModel.capacity} left",
             ),
             classDataWidget(
               name: "Price:  ",
-              data: "300 EGP",
+              data: "${classModel.price} EGP",
             ),
             Spacer(),
             classTrainersButton(
@@ -81,7 +81,7 @@ class ClassDetailsScreen extends StatelessWidget {
                                   () => Navigator.pop(context),
                                 );
                               },
-                              price: 300,
+                              price: classModel.price.toDouble(),
                               onPaymentError: () => print("error"),
                             )));
               },

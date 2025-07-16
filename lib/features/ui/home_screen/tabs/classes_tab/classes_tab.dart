@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gym_app_graduation_project/core/utils/app_images.dart';
+import 'package:gym_app_graduation_project/core/utils/mock_data.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/FilterScreen.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/class_card.dart';
 
@@ -12,6 +12,9 @@ class ClassesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get mock classes data
+    final classes = MockData.getMockClasses();
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -66,8 +69,9 @@ class ClassesTab extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemBuilder: (context, index) => ClassCard(),
-                itemCount: 5,
+                itemBuilder: (context, index) =>
+                    ClassCard(classModel: classes[index]),
+                itemCount: classes.length,
               ),
             ),
           ],

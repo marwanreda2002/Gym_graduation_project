@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +12,9 @@ import 'core/utils/cache_helper.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  CacheHelper.init();
-  DioHelper.dioInit();
+  await Firebase.initializeApp();
+  await CacheHelper.init();
+  ApiManager.dioInit();
   Bloc.observer = MyBlocObserver();
   await ScreenUtil.ensureScreenSize();
   runApp( GymApp(appRouter: AppRouter(),));
@@ -28,7 +30,7 @@ class GymApp extends StatelessWidget {
       minTextAdapt: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.chatbot,
+        initialRoute: Routes.homeScreen,
         onGenerateRoute: appRouter.generateRoure,
         theme: AppTheme.lightTheme,
       ),

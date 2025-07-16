@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
 import 'package:gym_app_graduation_project/core/utils/app_images.dart';
 import 'package:gym_app_graduation_project/core/utils/cache_helper.dart';
+import 'package:gym_app_graduation_project/core/utils/mock_data.dart';
 import 'package:gym_app_graduation_project/core/utils/trainer_model.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/classes_tab/class_card.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/home_tab/qr_code_screen.dart';
@@ -18,15 +19,17 @@ import '../../../../../core/utils/app_styels.dart';
 class HomeTab extends StatelessWidget {
   HomeTab({super.key});
 
-  Trainer trainer = Trainer(
-      name: "Marwan",
-      imagePath: "assets/images/trainer1.png",
-      rating: 5.0,
-      reviews: 500);
 
   @override
   Widget build(BuildContext context) {
     CacheHelper.removeData(key: "isHome");
+
+    // Get mock classes data
+    final classes = MockData.getMockClasses();
+
+    // Get mock trainers data
+    final trainers = MockData.getMockTrainers();
+    
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 40.h),
@@ -49,7 +52,8 @@ class HomeTab extends StatelessWidget {
                           ],
                         ).createShader(bounds),
                     child: Text(
-                      "Mohamed",
+                      // CacheHelper.getData(key: "name"),
+                      "Marwan Reda",
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold, fontSize: 36.sp),
                     )),
@@ -59,7 +63,7 @@ class HomeTab extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QrCodeScreen(),
+                          builder: (context) => QRCodeScreen(),
                         ));
                   },
                   child: ShaderMask(
@@ -98,9 +102,9 @@ class HomeTab extends StatelessWidget {
                         CircularPercentIndicator(
                           radius: 45.0,
                           lineWidth: 7.0,
-                          percent: 0.9,
+                          percent: 0.64,
                           center: Text(
-                            "${(0.9 * 100).toInt()}%",
+                            "${(0.64 * 100).toInt()}%",
                             style: AppStyles.bold20Primary,
                           ),
                           progressColor: AppColors.primaryColor,
@@ -123,37 +127,43 @@ class HomeTab extends StatelessWidget {
             SizedBox(height: 20.h),
             Row(
               children: [
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 11.w),
-                  width: 219.w,
-                  height: 78.h,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6.r),
-                      border: Border.all(color: Color(0xffCACACA), width: 1.5),
-                      color: Colors.white),
-                  child: Row(
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.membershipScreen);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 11.w),
+                    width: 219.w,
+                    height: 78.h,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6.r),
+                        border: Border.all(color: Color(0xffCACACA),
+                            width: 1.5),
+                        color: Colors.white),
+                    child: Row(
                       // mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Subscription",
-                          style: AppStyles.medium18black,
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        CircularPercentIndicator(
-                          radius: 35.0,
-                          lineWidth: 6,
-                          percent: 20 / 30,
-                          center: Text(
-                            "20/30",
-                            style: AppStyles.bold14primary,
+                        children: [
+                          Text(
+                            "Subscription",
+                            style: AppStyles.medium18black,
                           ),
-                          progressColor: AppColors.primaryColor,
-                          backgroundColor: Colors.grey[300]!,
-                          circularStrokeCap: CircularStrokeCap.round,
-                        ),
-                      ]),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          CircularPercentIndicator(
+                            radius: 35.0,
+                            lineWidth: 6,
+                            percent: 17 / 30,
+                            center: Text(
+                              "17/30",
+                              style: AppStyles.bold14primary,
+                            ),
+                            progressColor: AppColors.primaryColor,
+                            backgroundColor: Colors.grey[300]!,
+                            circularStrokeCap: CircularStrokeCap.round,
+                          ),
+                        ]),
+                  ),
                 ),
                 SizedBox(
                   width: 10.w,
@@ -203,15 +213,6 @@ class HomeTab extends StatelessWidget {
                   style: AppStyles.semibold24Black,
                 ),
                 Spacer(),
-                TextButton(
-                  onPressed: () {
-                    //   Todo: navigate to gallery screen
-                  },
-                  child: Text(
-                    "view all",
-                    style: AppStyles.regular18primary,
-                  ),
-                ),
               ],
             ),
             // SizedBox(height: 15.h,),
@@ -247,15 +248,7 @@ class HomeTab extends StatelessWidget {
                       style: AppStyles.semibold24Black,
                     ),
                     Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        //   Todo: navigate to Trainer screen
-                      },
-                      child: Text(
-                        "view all",
-                        style: AppStyles.regular18primary,
-                      ),
-                    ),
+
                   ],
                 ),
                 SizedBox(
@@ -264,8 +257,9 @@ class HomeTab extends StatelessWidget {
                     separatorBuilder: (context, index) => SizedBox(
                       width: 20.w,
                     ),
-                    itemBuilder: (context, index) => TrainerCard(),
-                    itemCount: 5,
+                    itemBuilder: (context, index) =>
+                        TrainerCard(trainer: trainers[index]),
+                    itemCount: trainers.length,
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
@@ -279,22 +273,17 @@ class HomeTab extends StatelessWidget {
                       style: AppStyles.semibold24Black,
                     ),
                     Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        //   Todo: navigate to gallery screen
-                      },
-                      child: Text(
-                        "view all",
-                        style: AppStyles.regular18primary,
-                      ),
-                    ),
+
                   ],
                 ),
                 SizedBox(
                   height: 310.h,
                   child: ListView.builder(
-                    itemBuilder: (context, index) => ClassCard(),
-                    itemCount: 5,
+                    itemBuilder: (context, index) =>
+                        ClassCard(
+                          classModel: classes[index],
+                        ),
+                    itemCount: classes.length,
                     scrollDirection: Axis.horizontal,
                   ),
                 )

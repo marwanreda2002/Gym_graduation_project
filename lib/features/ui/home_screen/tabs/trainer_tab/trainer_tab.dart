@@ -1,34 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:gym_app_graduation_project/core/utils/app_colors.dart';
-import 'package:gym_app_graduation_project/features/ui/auth/login/login_screen.dart';
-import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_service.dart';
+import 'package:gym_app_graduation_project/core/utils/mock_data.dart';
 import '../../../../../config/routing/routes.dart';
 import '../../../../../core/utils/app_styels.dart';
 import 'trainer_card.dart';
 import '../../../../../core/utils/trainer_model.dart';
-import '../../home_screen.dart';
-import '../classes_tab/classes_tab.dart';
 
-class TrainerTab extends StatefulWidget {
+class TrainerTab extends StatelessWidget {
   const TrainerTab({super.key});
 
   @override
-  State<TrainerTab> createState() => _TrainerTabState();
-}
-
-class _TrainerTabState extends State<TrainerTab> {
-  late Future<List<Trainer>> trainers;
-
-  @override
-  void initState() {
-    super.initState();
-    trainers = TrainerService.fetchTrainers();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    // Get mock trainers data
+    final trainers = MockData.getMockTrainers();
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -79,72 +65,14 @@ class _TrainerTabState extends State<TrainerTab> {
                     mainAxisSpacing: 20.h,
                     crossAxisSpacing: 20.w,
                     crossAxisCount: 2),
-                itemBuilder: (context, index) => TrainerCard(),
-                itemCount: 16,
+                itemBuilder: (context, index) =>
+                    TrainerCard(trainer: trainers[index]),
+                itemCount: trainers.length,
               ),
             ),
           ],
         ),
       ),
     );
-
-    // Scaffold(
-    //     backgroundColor: AppColors.primaryColor,
-    //     body: SafeArea(
-    //       child: Column(
-    //         crossAxisAlignment: CrossAxisAlignment.start,
-    //         children: [
-    //           Padding(
-    //             padding:
-    //             const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    //             child: Text(
-    //               'Trainers',
-    //               style: TextStyle(
-    //                 fontSize: 32,
-    //                 fontWeight: FontWeight.bold,
-    //                 color: AppColors.blackColor,
-    //               ),
-    //             ),
-    //           ),
-    //           Expanded(
-    //             child: FutureBuilder<List<Trainer>>(
-    //               future: trainers,
-    //               builder: (context, snapshot) {
-    //                 if (snapshot.connectionState == ConnectionState.waiting) {
-    //                   return Center(child: CircularProgressIndicator());
-    //                 } else if (snapshot.hasError) {
-    //                   return Center(child: Text('Erro: ${snapshot.error}'));
-    //                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-    //                   return Center(child: Text('there is no trainers'));
-    //                 } else {
-    //                   final trainers = snapshot.data!;
-    //                   return GridView.builder(
-    //                     padding: EdgeInsets.all(12),
-    //                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-    //                       crossAxisCount: 2,
-    //                       childAspectRatio: 0.9,
-    //                       crossAxisSpacing: 10,
-    //                       mainAxisSpacing: 12,
-    //                     ),
-    //                     itemCount: trainers.length,
-    //                     itemBuilder: (context, index) {
-    //                       return TrainerCard();
-    //                     },
-    //                   );
-    //                 }
-    //               },
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //     floatingActionButton: FloatingActionButton(
-    //       backgroundColor: AppColors.greyTextColor,
-    //       onPressed: () {
-    //         Navigator.pushNamed(context, '/aiChat');
-    //       },
-    //       child: Icon(Icons.smart_toy_outlined),
-    //     ),
-    //     );
   }
 }

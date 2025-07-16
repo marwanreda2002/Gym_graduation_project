@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app_graduation_project/config/routing/routes.dart';
+import 'package:gym_app_graduation_project/core/utils/trainer_model.dart';
+import 'package:gym_app_graduation_project/data/models/class_model.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/age_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/dashboard_screen.dart';
 import 'package:gym_app_graduation_project/features/ui/BMI/genedre_screen.dart';
@@ -16,10 +18,14 @@ import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_rating_page.dart';
 import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/trainer_tab.dart'
     show TrainerTab;
+import 'package:gym_app_graduation_project/features/ui/home_screen/tabs/trainer_tab/video_player_screen.dart';
 
 import '../../features/ui/BMI/height_screen.dart';
+import '../../features/ui/auth/register/register_screen.dart';
 import '../../features/ui/home_screen/tabs/trainer_tab/Thank You.dart';
 import '../../features/ui/home_screen/tabs/trainer_tab/techniques_details.dart';
+import '../../features/ui/onboarding_screen/onboarding_screen.dart';
+import 'package:gym_app_graduation_project/features/ui/membership/membership_screen.dart';
 
 class AppRouter {
   Route generateRoure(RouteSettings settings) {
@@ -51,23 +57,40 @@ class AppRouter {
         return MaterialPageRoute(
             builder: (_) => const MyBookmarksScreen(), settings: settings);
       case Routes.trainerDetailsPage:
-        final trainerId =
-        settings.arguments is int ? settings.arguments as int : 0;
-        return MaterialPageRoute(
-          builder: (_) => TrainerDetailsPage(
-            trainerId: trainerId,
-            settings: settings,
-          ),
-        );
+        try {
+          final trainer = settings.arguments as Trainer;
+          return MaterialPageRoute(
+            builder: (_) => TrainerDetailsPage(
+              trainer: trainer,
+              settings: settings,
+            ),
+          );
+        } catch (e) {
+          return MaterialPageRoute(
+            builder: (_) => Scaffold(
+              body: Center(
+                child: Text('Error: Invalid trainer data'),
+              ),
+            ),
+          );
+        }
       case Routes.techniqueDetails:
         return MaterialPageRoute(
           builder: (_) => TechniquesDetails(),
         );
       case Routes.trainerRatingPage:
-        return MaterialPageRoute(
-          builder: (_) => TrainerRatingScreen(),
-          settings: settings,
-        );
+        try {
+          final trainer = settings.arguments as Trainer;
+          return MaterialPageRoute(
+            builder: (_) => TrainerRatingScreen(trainer: trainer),
+            settings: settings,
+          );
+        } catch (e) {
+          return MaterialPageRoute(
+            builder: (_) => TrainerRatingScreen(),
+            settings: settings,
+          );
+        }
       case Routes.chatbot:
         return MaterialPageRoute(
           builder: (_) => ChatBotScreen(),
@@ -76,11 +99,51 @@ class AppRouter {
       case Routes.thankYouPage:
         return MaterialPageRoute(builder: (_) => ThankYouPage());
       case Routes.classDetails:
-        return MaterialPageRoute(builder: (_) => ClassDetailsScreen());
+        try {
+          final classModel = settings.arguments as ClassModel;
+          return MaterialPageRoute(
+            builder: (_) => ClassDetailsScreen(classModel: classModel),
+          );
+        } catch (e) {
+          return MaterialPageRoute(
+            builder: (_) => Scaffold(
+              body: Center(
+                child: Text('Error: Invalid class data'),
+              ),
+            ),
+          );
+        }
       case Routes.updateProfileScreen:
         return MaterialPageRoute(builder: (_) => UpdateProfile());
       case Routes.passwordManagerScreen:
         return MaterialPageRoute(builder: (_) => PasswordManagerScreen());
+      case Routes.onBoardingScreen:
+        return MaterialPageRoute(builder: (_) => OnboardingScreen());
+      case Routes.registerScreen:
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
+      case Routes.videoPlayer:
+        final args = settings.arguments;
+        if (args is Map<String, dynamic> &&
+            args.containsKey('videoUrl') &&
+            args.containsKey('videoTitle') &&
+            args.containsKey('videoDescription')) {
+          return MaterialPageRoute(
+            builder: (_) => VideoPlayerScreen(
+              videoUrl: args['videoUrl'],
+              videoTitle: args['videoTitle'],
+              videoDescription: args['videoDescription'],
+            ),
+          );
+        }
+        return MaterialPageRoute(
+          builder: (_) => const Scaffold(
+            body: Center(
+              child: Text('Invalid arguments for video player'),
+            ),
+          ),
+        );
+      case Routes.membershipScreen:
+        return MaterialPageRoute(builder: (_) => const MembershipScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

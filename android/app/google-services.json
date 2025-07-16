@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1022912298129",
+    "project_id": "gymappchatbot",
+    "storage_bucket": "gymappchatbot.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022912298129:android:cd540e86faf7ad53429330",
+        "android_client_info": {
+          "package_name": "com.example.gym_app_graduation_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl72V4u8GQQoBHeCkB5qyF_RiiRNbcMoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

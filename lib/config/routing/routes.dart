@@ -23,4 +23,7 @@ class Routes {
   static const String paymentScreen = '/paymentScreen';
   static const String updateProfileScreen = '/updateProfile';
   static const String passwordManagerScreen = '/password manager';
+  static const String onBoardingScreen = '/onBoardingScreen';
+  static const String videoPlayer = '/videoPlayer';
+  static const String membershipScreen = '/membershipScreen';
 }
